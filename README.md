@@ -18,10 +18,12 @@ Das Format sieht folgendermassen aus:
 ## PublishTopic
 Auf diesem Topic sendet dieser Client eine Übersicht des Status aller Parkplätze.
 Das Format sieht folgendermassen aus:
+```json
 {
   "xyz": true,
   "abc": false
 }
+```
 
 # Configuration
 Create a M242MqttClient/appsetting.json file with the following content:
