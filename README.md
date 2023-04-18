@@ -42,8 +42,8 @@ Create a M242MqttClient/appsetting.json file with the following content:
     "General": {
         "ClientId": "MyKoohlClient",
         "MqttBroker": "cloud.tbz.ch",
-        "SensorTopic": "core",
-        "PublishTopic": "eroc",
+        "SensorTopic": "garagepp/core",
+        "PublishTopic": "garagepp/eroc",
         "ApiKey": "YOURAPIKEY"
     }
 }
