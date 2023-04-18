@@ -1,0 +1,93 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "M242MqttClient/1.0.0": {
+        "dependencies": {
+          "MQTTnet.AspNetCore": "4.1.4.563",
+          "Telegram.Bot": "18.0.0"
+        },
+        "runtime": {
+          "M242MqttClient.dll": {}
+        }
+      },
+      "MQTTnet/4.1.4.563": {
+        "runtime": {
+          "lib/net6.0/MQTTnet.dll": {
+            "assemblyVersion": "4.1.4.563",
+            "fileVersion": "4.1.4.563"
+          }
+        }
+      },
+      "MQTTnet.AspNetCore/4.1.4.563": {
+        "dependencies": {
+          "MQTTnet": "4.1.4.563"
+        },
+        "runtime": {
+          "lib/net6.0/MQTTnet.AspNetCore.dll": {
+            "assemblyVersion": "4.1.4.563",
+            "fileVersion": "4.1.4.563"
+          }
+        }
+      },
+      "Newtonsoft.Json/12.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.2.23222"
+          }
+        }
+      },
+      "Telegram.Bot/18.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.2"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Telegram.Bot.dll": {
+            "assemblyVersion": "18.0.0.0",
+            "fileVersion": "18.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "M242MqttClient/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MQTTnet/4.1.4.563": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gO9segUcKyQJcjV7w7OOdoAIkec7cUN65vEhYutbdWcj4rbtz/oL/RDvQVVbameXc6ChkjKx7/HbO+R8ejAUZQ==",
+      "path": "mqttnet/4.1.4.563",
+      "hashPath": "mqttnet.4.1.4.563.nupkg.sha512"
+    },
+    "MQTTnet.AspNetCore/4.1.4.563": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jbwxw2dmOmuJORbrxFi+rJKKvOvAkAFdASVtBoHEynUT7gwnpO7j+XzqScLHHU6JYYAMmXVb+p8zCQggcKEWvg==",
+      "path": "mqttnet.aspnetcore/4.1.4.563",
+      "hashPath": "mqttnet.aspnetcore.4.1.4.563.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
+      "path": "newtonsoft.json/12.0.2",
+      "hashPath": "newtonsoft.json.12.0.2.nupkg.sha512"
+    },
+    "Telegram.Bot/18.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BD0UchUXINymCGS+1O1tv2enCRyv+VbSJQAgfnueTZs3j7K4XXyJyW0CgyJleTrqB1oq1hS1ux6gBpi3Ajp+ZQ==",
+      "path": "telegram.bot/18.0.0",
+      "hashPath": "telegram.bot.18.0.0.nupkg.sha512"
+    }
+  }
+}
