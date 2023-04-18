@@ -20,16 +20,12 @@ public class MqttClient
     {
         _storage = storage;
         _telegramBot = telegramBot;
-
-        var builder = new MqttClientOptionsBuilder()
+        
+        _options = new MqttClientOptionsBuilder()
             .WithClientId("MyKoohlClient")
             .WithTcpServer("cloud.tbz.ch")
-            // .WithCredentials("bud", "%spencer%")
-            .WithTls()
-            .WithCleanSession();
-
-        _options = builder.Build();
-
+            .Build();
+        
         var factory = new MqttFactory();
         _client = factory.CreateMqttClient();
 
@@ -106,6 +102,8 @@ public class MqttClient
             TopicFilters = new List<MqttTopicFilter>
                 { new() { Topic = "core", QualityOfServiceLevel = MqttQualityOfServiceLevel.AtMostOnce } }
         });
+
+        Console.WriteLine("### CONNECTION ESTABLISHED ###");
     }
 
     async Task OnDisconnectedAsync(MqttClientDisconnectedEventArgs eventArgs)

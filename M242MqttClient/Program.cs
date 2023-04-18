@@ -13,4 +13,4 @@ var telegramBotTask = telegramBot.StartAsync();
 await mqttClientTask;
 await telegramBotTask;
 
-
+Console.ReadKey();
