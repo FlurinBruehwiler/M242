@@ -1,5 +1,5 @@
-# M242
-MQTT 4 the win
+# M242 Miniprojekt - Parkplatzzählung
+In diesem Repository befindet sich das Backend der Parkplatzzählung, der Code für die M5STack2 befindet sich [hier](https://github.com/Z-100/Arduino-project).
 
 ## MQTT Client
 Wir verwendet das Package MQTTnet um einen MQTT Client zu erstellen. 
@@ -34,8 +34,11 @@ Es gibt zwei Commands
 /Unsubscribe:
 
 
-## Configuration
-Create a M242MqttClient/appsetting.json file with the following content:
+## Anleitung
+Um das Projekt laufen zu lassen muss zuerst die [dotnet 7 SDK](https://dotnet.microsoft.com/en-us/download) installiert werden. 
+Danach muss man das Projekt konfigurieren:
+
+Dafür muss die Datei M242MqttClient/appsetting.json mit dem folgenden Inhalt erstellt werden und angepasst werden:
 
 ```json
 {
@@ -47,4 +50,10 @@ Create a M242MqttClient/appsetting.json file with the following content:
         "ApiKey": "YOURAPIKEY"
     }
 }
+```
+
+Das Projekt kann mit dem folgenden Command laufen gelassen werden
+```
+cd M242MqttClient
+dotnet run
 ```
