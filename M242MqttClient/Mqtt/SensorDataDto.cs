@@ -1,3 +1,12 @@
-﻿namespace M242MqttClient.Mqtt;
+﻿using System.Text.Json.Serialization;
 
-public record SensorDataDto(bool IsOccupied, string ParkSpace);
+namespace M242MqttClient.Mqtt;
+
+public class SensorDataDto
+{
+    [JsonPropertyName("isOccupied")]
+    public int IsOccupied { get; set; }
+    
+    [JsonPropertyName("parkSpace")]
+    public string ParkSpace { get; set; } = null!;
+}

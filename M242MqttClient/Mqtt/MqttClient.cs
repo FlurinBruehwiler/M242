@@ -13,17 +13,19 @@ public class MqttClient
 {
     private readonly Storage _storage;
     private readonly TelegramBot _telegramBot;
+    private readonly Configuration _configuration;
     private readonly IMqttClient _client;
     private readonly MqttClientOptions _options;
 
-    public MqttClient(Storage storage, TelegramBot telegramBot)
+    public MqttClient(Storage storage, TelegramBot telegramBot, Configuration configuration)
     {
         _storage = storage;
         _telegramBot = telegramBot;
-        
+        _configuration = configuration;
+
         _options = new MqttClientOptionsBuilder()
-            .WithClientId("MyKoohlClient")
-            .WithTcpServer("cloud.tbz.ch")
+            .WithClientId(configuration.ClientId)
+            .WithTcpServer(configuration.MqttBroker)
             .Build();
         
         var factory = new MqttFactory();
@@ -49,7 +51,9 @@ public class MqttClient
     private async Task OnMessageReceivedAsync(MqttApplicationMessageReceivedEventArgs e)
     {
         var payloadString = Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
-
+        
+        
+        
         var sensorData = JsonSerializer.Deserialize<SensorDataDto>(payloadString);
 
         if (sensorData is null)
@@ -68,11 +72,11 @@ public class MqttClient
             };
             _storage.ParkingSpaces.Add(parkingSpace);
         }
-
+        
         if (parkingSpace.CurrentlyOccupied != sensorData.IsOccupied)
         {
             parkingSpace.CurrentlyOccupied = sensorData.IsOccupied;
-            if (parkingSpace.CurrentlyOccupied)
+            if (parkingSpace.CurrentlyOccupied == 1)
             {
                 parkingSpace.OccupiedSince = DateTime.Now;
                 await _telegramBot.SendMessageToSubscriber("Unlucky you, the left parking space is now occupied. You need to be faster next time!!!");
@@ -82,12 +86,14 @@ public class MqttClient
                 parkingSpace.OccupiedSince = null;
                 await _telegramBot.SendMessageToSubscriber("The left parking space is free, go take it.");
             }
-
-            var message = _storage.GetOverviewAsJson();
             
+            Console.WriteLine($"{parkingSpace.Key} is now {(parkingSpace.CurrentlyOccupied == 1 ? "occupied" : "free")}");
+            
+            var message = _storage.GetOverviewAsJson();
+
             var applicationMessage = MqttApplicationMessageFactory.Create(new MqttPublishPacket
             {
-                Topic = "eroc",
+                Topic = _configuration.PublishTopic,
                 Payload = Encoding.ASCII.GetBytes(message),
                 QualityOfServiceLevel = MqttQualityOfServiceLevel.AtLeastOnce
             });
@@ -100,7 +106,7 @@ public class MqttClient
         await _client.SubscribeAsync(new MqttClientSubscribeOptions
         {
             TopicFilters = new List<MqttTopicFilter>
-                { new() { Topic = "core", QualityOfServiceLevel = MqttQualityOfServiceLevel.AtMostOnce } }
+                { new() { Topic = _configuration.SensorTopic, QualityOfServiceLevel = MqttQualityOfServiceLevel.AtMostOnce } }
         });
 
         Console.WriteLine("### CONNECTION ESTABLISHED ###");

@@ -8,12 +8,14 @@ namespace M242MqttClient.Telegram;
 
 public class TelegramBot
 {
+    private readonly Configuration _configuration;
     private readonly TelegramBotClient _botClient;
     private readonly HashSet<long> _subscribedChats = new();
 
-    public TelegramBot()
+    public TelegramBot(Configuration configuration)
     {
-        _botClient = new TelegramBotClient("6090818124:AAHXcgz2d-JF_6UaYdgtUINE_VJ0jWE4pC4");
+        _configuration = configuration;
+        _botClient = new TelegramBotClient(configuration.ApiKey);
     }
 
     public async Task SendMessageToSubscriber(string message)

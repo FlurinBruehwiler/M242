@@ -17,6 +17,6 @@ public class Storage
 public class ParkingSpace
 {
     public required string Key { get; set; }
-    public bool CurrentlyOccupied { get; set; }
+    public int CurrentlyOccupied { get; set; }
     public DateTime? OccupiedSince { get; set; }
 }
