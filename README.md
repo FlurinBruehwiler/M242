@@ -10,9 +10,12 @@ Kommuniziert wird über zwei topics:
 Über dieses Topic senden die Sensoren ihren Status, wenn sich dieser geändert hat.
 Das Format sieht folgendermassen aus:
 
+0: fale
+1: true
+
 ```json
 {
-  "isOccupied": true,
+  "isOccupied": 1,
   "parkSpace": "xyz"
 }
 ```
@@ -22,8 +25,8 @@ Auf diesem Topic sendet dieser Client eine Übersicht des Status aller Parkplät
 Das Format sieht folgendermassen aus:
 ```json
 {
-  "xyz": true,
-  "abc": false
+  "xyz": 1,
+  "abc": 0
 }
 ```
 
@@ -43,13 +46,11 @@ Dafür muss die Datei M242MqttClient/appsetting.json mit dem folgenden Inhalt er
 
 ```json
 {
-    "General": {
-        "ClientId": "MyKoohlClient",
-        "MqttBroker": "cloud.tbz.ch",
-        "SensorTopic": "garagepp/core",
-        "PublishTopic": "garagepp/eroc",
-        "ApiKey": "YOURAPIKEY"
-    }
+    "ClientId": "MyKoohlClient",
+    "MqttBroker": "cloud.tbz.ch",
+    "SensorTopic": "garagepp/core",
+    "PublishTopic": "garagepp/eroc",
+    "ApiKey": "YOURAPIKEY"
 }
 ```
 
