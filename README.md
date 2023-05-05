@@ -1,5 +1,6 @@
 # M242 Miniprojekt - Parkplatzzählung
-In diesem Repository befindet sich das Backend der Parkplatzzählung, der Code für die M5STack2 befindet sich [hier](https://github.com/Z-100/Arduino-project).
+In diesem Repository befindet sich das Backend der Parkplatzzählung, der Code für die M5Stack2 
+befindet sich in [M5Stack-parkingsystem](https://github.com/Z-100/M5Stack-parkingsystem).
 
 ## MQTT Client
 Wir verwendet das Package MQTTnet um einen MQTT Client zu erstellen. 
