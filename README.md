@@ -1,5 +1,6 @@
 # M242 Miniprojekt - Parkplatzzählung
-In diesem Repository befindet sich das Backend der Parkplatzzählung, der Code für die M5STack2 befindet sich [hier](https://github.com/Z-100/Arduino-project).
+In diesem Repository befindet sich das Backend der Parkplatzzählung, der Code für die M5Stack2 
+befindet sich in [M5Stack-parkingsystem](https://github.com/Z-100/M5Stack-parkingsystem).
 
 ## MQTT Client
 Wir verwendet das Package MQTTnet um einen MQTT Client zu erstellen. 
@@ -9,9 +10,12 @@ Kommuniziert wird über zwei topics:
 Über dieses Topic senden die Sensoren ihren Status, wenn sich dieser geändert hat.
 Das Format sieht folgendermassen aus:
 
+0: fale
+1: true
+
 ```json
 {
-  "isOccupied": true,
+  "isOccupied": 1,
   "parkSpace": "xyz"
 }
 ```
@@ -21,8 +25,8 @@ Auf diesem Topic sendet dieser Client eine Übersicht des Status aller Parkplät
 Das Format sieht folgendermassen aus:
 ```json
 {
-  "xyz": true,
-  "abc": false
+  "xyz": 1,
+  "abc": 0
 }
 ```
 
@@ -42,13 +46,11 @@ Dafür muss die Datei M242MqttClient/appsetting.json mit dem folgenden Inhalt er
 
 ```json
 {
-    "General": {
-        "ClientId": "MyKoohlClient",
-        "MqttBroker": "cloud.tbz.ch",
-        "SensorTopic": "garagepp/core",
-        "PublishTopic": "garagepp/eroc",
-        "ApiKey": "YOURAPIKEY"
-    }
+    "ClientId": "MyKoohlClient",
+    "MqttBroker": "cloud.tbz.ch",
+    "SensorTopic": "garagepp/core",
+    "PublishTopic": "garagepp/eroc",
+    "ApiKey": "YOURAPIKEY"
 }
 ```
 
