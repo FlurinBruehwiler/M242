@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json;
+using M242MqttClient.InfluxDb;
 using M242MqttClient.Telegram;
 using MQTTnet;
 using MQTTnet.Client;
@@ -14,14 +15,16 @@ public class MqttClient
     private readonly Storage _storage;
     private readonly TelegramBot _telegramBot;
     private readonly Configuration _configuration;
+    private readonly Influx _influx;
     private readonly IMqttClient _client;
     private readonly MqttClientOptions _options;
 
-    public MqttClient(Storage storage, TelegramBot telegramBot, Configuration configuration)
+    public MqttClient(Storage storage, TelegramBot telegramBot, Configuration configuration, Influx influx)
     {
         _storage = storage;
         _telegramBot = telegramBot;
         _configuration = configuration;
+        _influx = influx;
 
         _options = new MqttClientOptionsBuilder()
             .WithClientId(configuration.ClientId)
@@ -52,16 +55,19 @@ public class MqttClient
     {
         var payloadString = Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
         
-        
-        
         var sensorData = JsonSerializer.Deserialize<SensorDataDto>(payloadString);
-
+        
         if (sensorData is null)
         {
             Console.WriteLine("Sensor Data was null");
             return;
         }
 
+        await ProcessMessage(sensorData);
+    }
+
+    public async Task ProcessMessage(SensorDataDto sensorData)
+    {
         var parkingSpace = _storage.ParkingSpaces.FirstOrDefault(x => x.Key == sensorData.ParkSpace);
 
         if (parkingSpace is null)
@@ -88,6 +94,8 @@ public class MqttClient
             }
             
             Console.WriteLine($"{parkingSpace.Key} is now {(parkingSpace.CurrentlyOccupied == 1 ? "occupied" : "free")}");
+            
+            _influx.SendData(_storage.ParkingSpaces);
             
             var message = _storage.GetOverviewAsJson();
 
