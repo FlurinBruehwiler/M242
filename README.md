@@ -49,9 +49,15 @@ Dafür muss die Datei M242MqttClient/appsetting.json mit dem folgenden Inhalt er
 {
     "ClientId": "MyKoohlClient",
     "MqttBroker": "cloud.tbz.ch",
-    "SensorTopic": "garagepp/core",
+    "SensorTopic": "garagepp/publish",
     "PublishTopic": "garagepp/eroc",
-    "ApiKey": "YOURAPIKEY"
+    "ApiKey": "APIKEY",
+    "InfluxDb": {
+        "ApiKey": "APIKEY",
+        "Bucket": "Parkhaus",
+        "Url": "https://eu-central-1-1.aws.cloud2.influxdata.com",
+        "Org": "Flurin Marvin"
+    }
 }
 ```
 
