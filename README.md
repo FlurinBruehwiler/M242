@@ -1,6 +1,10 @@
 # M242 Miniprojekt - Parkplatzzählung
+
 In diesem Repository befindet sich das Backend der Parkplatzzählung, der Code für die M5Stack2 
 befindet sich in [M5Stack-parkingsystem](https://github.com/Z-100/M5Stack-parkingsystem).
+
+Die Testfälle, welche 100% des ganzen Systems testen sind ebenfalls im 
+[M5Stack-parkingsystem](https://github.com/Z-100/M5Stack-parkingsystem) aufzufinden. 
 
 ## MQTT Client
 Wir verwendet das Package MQTTnet um einen MQTT Client zu erstellen. 
@@ -23,11 +27,8 @@ Das Format sieht folgendermassen aus:
 ### PublishTopic
 Auf diesem Topic sendet dieser Client eine Übersicht des Status aller Parkplätze.
 Das Format sieht folgendermassen aus:
-```json
-{
-  "xyz": 1,
-  "abc": 0
-}
+```text
+0:1
 ```
 
 ## Telegram Bot
