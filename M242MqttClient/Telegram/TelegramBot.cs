@@ -57,13 +57,13 @@ public class TelegramBot
         //     }
         // }, cancellationToken: cts.Token);
 
-        var me = await _botClient.GetMeAsync(cancellationToken: cts.Token);
-
-        Console.WriteLine($"Start listening for @{me.Username}");
-        Console.ReadLine();
-
-        // Send cancellation request to stop bot
-        cts.Cancel();
+        // var me = await _botClient.GetMeAsync(cancellationToken: cts.Token);
+        //
+        // Console.WriteLine($"Start listening for @{me.Username}");
+        // Console.ReadLine();
+        //
+        // // Send cancellation request to stop bot
+        // cts.Cancel();
     }
 
     async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)

@@ -85,12 +85,12 @@ public class MqttClient
             if (parkingSpace.CurrentlyOccupied == 1)
             {
                 parkingSpace.OccupiedSince = DateTime.Now;
-                await _telegramBot.SendMessageToSubscriber("Unlucky you, the left parking space is now occupied. You need to be faster next time!!!");
+                await _telegramBot.SendMessageToSubscriber($"Unlucky you, the {parkingSpace.Key} parking space is now occupied. You need to be faster next time!!!");
             }
             else
             {
                 parkingSpace.OccupiedSince = null;
-                await _telegramBot.SendMessageToSubscriber("The left parking space is free, go take it.");
+                await _telegramBot.SendMessageToSubscriber($"The {parkingSpace.Key} parking space is free, go take it.");
             }
             
             Console.WriteLine($"{parkingSpace.Key} is now {(parkingSpace.CurrentlyOccupied == 1 ? "occupied" : "free")}");
