@@ -39,7 +39,7 @@ Es gibt zwei Commands
 /Unsubscribe:
 
 
-## Anleitung
+## Anleitung "Backend"
 Um das Projekt laufen zu lassen muss zuerst die [dotnet 7 SDK](https://dotnet.microsoft.com/en-us/download) installiert werden. 
 Danach muss man das Projekt konfigurieren:
 
@@ -60,3 +60,12 @@ Das Projekt kann mit dem folgenden Command laufen gelassen werden
 cd M242MqttClient
 dotnet run
 ```
+
+## Anleitung "M5Stack Core2"
+1. Clone Repository
+2. Open it in VS Code
+3. Install the PlatformIO Extension
+4. Fill in the WiFi Inforrmawtion in requestclient.cpp:10
+5. Upload the Code to the M5StackCore2.
+	- One should have the boolean isTopM5Stack == true and the other one false in application_state.cpp:14
+
