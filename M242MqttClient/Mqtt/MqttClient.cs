@@ -99,6 +99,8 @@ public class MqttClient
             
             var message = _storage.GetOverviewAsJson();
 
+            Console.WriteLine(message);
+            
             var applicationMessage = MqttApplicationMessageFactory.Create(new MqttPublishPacket
             {
                 Topic = _configuration.PublishTopic,

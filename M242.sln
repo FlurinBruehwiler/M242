@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M242MqttClient", "M242MqttClient\M242MqttClient.csproj", "{5E3F863C-8082-4985-ACF1-46EC29E4F251}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlertDisplay", "AlertDisplay\AlertDisplay.csproj", "{2DBA64CD-3581-4DD9-A2C7-693616A7F2F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{5E3F863C-8082-4985-ACF1-46EC29E4F251}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E3F863C-8082-4985-ACF1-46EC29E4F251}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E3F863C-8082-4985-ACF1-46EC29E4F251}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DBA64CD-3581-4DD9-A2C7-693616A7F2F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DBA64CD-3581-4DD9-A2C7-693616A7F2F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DBA64CD-3581-4DD9-A2C7-693616A7F2F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DBA64CD-3581-4DD9-A2C7-693616A7F2F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
