@@ -14,7 +14,7 @@ Kommuniziert wird über zwei topics:
 Über dieses Topic senden die Sensoren ihren Status, wenn sich dieser geändert hat.
 Das Format sieht folgendermassen aus:
 
-0: fale
+0: false
 1: true
 
 ```json
